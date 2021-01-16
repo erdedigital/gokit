@@ -17,7 +17,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	endpoint "github.com/erdedigital/gokit/endpoint"
+	"github.com/erdedigital/gokit/endpoint"
 	repo "github.com/erdedigital/gokit/repository"
 	svr "github.com/erdedigital/gokit/server"
 	svc "github.com/erdedigital/gokit/service"

@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"errors"
 
-	model "github.com/erdedigital/gokit/model"
+	"github.com/erdedigital/gokit/model"
 	"github.com/go-kit/kit/log"
 )
 
