@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 
-	model "github.com/erdedigital/gokit"
+	model "github.com/erdedigital/gokit/model"
 )
 
 type Repository interface {

@@ -17,10 +17,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/erdedigital/gokit/endpoint"
-	"github.com/erdedigital/gokit/repository"
-	"github.com/erdedigital/gokit/server"
-	"github.com/erdedigital/gokit/service"
+	endpoint "github.com/erdedigital/gokit/endpoint"
+	repo "github.com/erdedigital/gokit/repository"
+	svr "github.com/erdedigital/gokit/server"
+	svc "github.com/erdedigital/gokit/service"
 )
 
 const dbsource = "postgresql://postgres:postgres@localhost:5432/postgres?sslmode=disable"
@@ -56,11 +56,11 @@ func main() {
 
 	flag.Parse()
 	ctx := context.Background()
-	var srv service.Service
+	var srv svc.Service
 	{
-		repository := repository.NewRepo(db, logger)
+		repository := repo.NewRepo(db, logger)
 
-		srv = repository.NewService(repository, logger)
+		srv = repo.NewService(repository, logger)
 	}
 
 	errs := make(chan error)
@@ -75,7 +75,7 @@ func main() {
 
 	go func() {
 		fmt.Println("listening on port", *httpAddr)
-		handler := server.NewHTTPServer(ctx, endpoints)
+		handler := svr.NewHTTPServer(ctx, endpoints)
 		errs <- http.ListenAndServe(*httpAddr, handler)
 	}()
 
